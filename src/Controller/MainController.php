@@ -17,10 +17,17 @@ class MainController extends AbstractController
         ]);
     }
     #[Route('/login', name: 'app_login')]
-   
     public function getLoginPage(): Response
     {
         return $this->render('main/login.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
+
+    #[Route('/signup', name: 'app_signup')]
+    public function getSignupPage(): Response
+    {
+        return $this->render('main/signup.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }
