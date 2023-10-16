@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Espace utilisateur | Club Ados App{% endblock %}
+
+{% block body %}
+<!-- component -->
+<link rel="preconnect" href="https://rsms.me/">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<div class="wrapper">
+<div class="bg-slate-100 overflow-y-scroll w-screen h-screen antialiased text-slate-300 selection:bg-blue-600 selection:text-white">
+    <div class="flex flex-col relative w-screen">
+        <div id="menu" class="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 fixed left-0 h-screen overflow-y-scroll">
+           <div id="logo" class="my-4 px-6">
+            <h1 class="text-lg md:text-2xl font-bold text-white">Club<span class="text-blue-500">Ado</span>.</h1>
+            <p class="text-slate-500 text-sm">Manage your actions and activities</p>
+           </div>
+           <div id="profile" class="px-6 py-10">
+            <p class="text-slate-500">Bienvenue,</p>
+            <a href="#" class="inline-flex space-x-2 items-center">
+                <span>
+                    <img class="rounded-full w-8 h-8" src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=128&q=80" alt="">
+                </span>
+                <span class="text-sm md:text-base font-bold">
+                    {{app.user.username}}
+                </span>
+                </a>
+           </div>
+           <div id="nav" class="w-full px-6">
+
+            <div class="flex flex-col">
+                <button type='button' data-id="articles" class='tablinks articles w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 bg-blue-800 hover:bg-white/5 transition ease-linear duration-150'>Articles</button>
+            </div>
+            <div class="flex flex-col">
+                <button type='button'  data-id="videos" class='tablinks videos w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150'>Vidéos</button>
+            </div>
+            <div class="flex flex-col">
+            <button type='button' data-id="activities" class='tablinks activities w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3  hover:bg-white/5 transition ease-linear duration-150'>Activités</button>
+            </div>
+            <div class="flex flex-col">
+            <button type='button' data-id="users"class='tablinks users w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150'>Utilisateurs</button>
+            </div>
+            <div class="flex flex-col">
+            <button type='button' data-id="settings" class='tablinks settings w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150'>Configuration</button>
+            </div>
+            
+
+            <a href="/logout">Deconnexion</a>
+            
+           </div>
+        </div>
+        
+      
+    </div>
+
+    <div id="articles" class="tabcontent active text-gray-900 object-center"> {% include '_partials/_articles.html.twig' %}</div>
+    <div id="videos" class="tabcontent text-center text-red-600 hidden"> {% include '_partials/_videos.html.twig' %}</div>
+    <div id="activities" class="tabcontent text-center text-red-600 hidden"> {% include '_partials/_activities.html.twig' %}</div>
+    <div id="users" class="tabcontent text-center text-red-600 hidden"> {% include '_partials/_users.html.twig' %}</div>
+    <div id="settings" class="tabcontent text-center text-red-600 hidden"> {% include '_partials/_settings.html.twig' %}</div>
+</div>
+
+</div>
+
+<style>
+
+.tabcontent {
+  display: none;
+  padding: 10px 20px;
+}
+
+.tabcontent.active {
+  display: block;
+}
+
+</style>
+
+{% endblock %}

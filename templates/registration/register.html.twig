@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+<!-- component -->
+<div class="bg-gray-100 flex justify-center items-center h-screen">
+    <!-- Left: Image -->
+<div class="w-1/2 h-screen hidden lg:block">
+  <img src="{{asset('images/login-img.jpg')}}" alt="Login Image" class="object-cover w-full h-full">
+</div>
+<!-- Right: Login Form -->
+<div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+  <h1 class="text-2xl font-semibold mb-4">Inscription</h1>
+
+     {{ form_start(registrationForm) }}
+         <div class="mb-4">
+      {{ form_errors(registrationForm) }}
+        {{ form_row(registrationForm.email, {'attr': {'class': 'w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500'}}) }}
+        </div>
+        <div class="mb-4">
+        {{ form_row(registrationForm.username, {'attr': {'class': 'w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500'}}) }}
+        </div>
+        
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe', 'attr': {'class': 'w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500'}
+        }) }}
+        {{ form_row(registrationForm.AccepterLesCgu, {'attr': {'class': 'my-5'}}) }}
+
+        <button type="submit" class="btn bg-orange-300 hover:bg-orange-600 text-black font-semibold rounded-md py-2 px-4 w-full">S'inscrire</button>
+    {{ form_end(registrationForm) }}
+
+
+     <div class="mt-6 text-orange-500 text-center">
+    <a href="/login" class="hover:underline">Se connecter</a>
+  </div>
+
+  
+
+</div>
+</div>
+
+
+
+
+{% endblock %}
